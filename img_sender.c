@@ -46,7 +46,7 @@ void client_start(void)  {
     }
 
     while(1) {
-        csp_conn_t * conn = csp_connect(CSP_PRIO_NORM, 1, 10, 1000, CSP_O_RDP);
+        csp_conn_t * conn = csp_connect(CSP_PRIO_NORM, 1, 10, 1000, CSP_O_RDP | CSP_O_CRC32);
 		if (conn == NULL) {
 			/* Connect failed */
 			csp_print("Connection failed\n");
