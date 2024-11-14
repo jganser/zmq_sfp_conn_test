@@ -46,7 +46,7 @@ void client_start(void)  {
     }
 
     while(1) {
-        csp_conn_t * conn = csp_connect(CSP_PRIO_NORM, 1, 10, 1000, CSP_O_NONE);
+        csp_conn_t * conn = csp_connect(CSP_PRIO_NORM, 1, 10, 1000, CSP_O_RDP);
 		if (conn == NULL) {
 			/* Connect failed */
 			csp_print("Connection failed\n");
@@ -55,7 +55,7 @@ void client_start(void)  {
         
         csp_print("connection established. Sending Image\n");
         
-        int ret = csp_sfp_send(conn, img, bytes_read, 241, 5000);
+        int ret = csp_sfp_send(conn, img, bytes_read, 200, 5000);
         if (ret != CSP_ERR_NONE) {
             csp_print("Error sending image: %d\n", ret);
             csp_close(conn);
